@@ -1,0 +1,32 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 10.5rem;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #ffffffd8;
+  display: flex;
+  align-items: center;
+  color: #E3334D;
+}
+
+hr{
+  border-color: #E3334D;
+  background-color: #E3334D;
+  height: 2px;
+}
+
+.App-body{
+  background-color: #ffffffd8;
+  min-height: 20rem;
+  display: flex;
+  padding: 2rem;
+}
+
+.App-footer{
+  font-style: italic;
+}
