@@ -1,20 +1,14 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import assert from 'assert';
-import App from './App';
+import * as Utils from './utils';
 
-it('renders properly', () => {
-  shallow(<App />);
+it('Check year', () => {
+    expect(Utils.getFullYear()).toEqual(2022);
 });
 
-it('checking renders', () => {
-  const wrapper = shallow(<App />);
+it('Check footer copy', () => {
+    expect(Utils.getFooterCopy(true)).toEqual('Holberton School');
+    expect(Utils.getFooterCopy(false)).toEqual('Holberton School main dashboard');
+})
 
-  const header = wrapper.find('div.App-body');
-  const body = wrapper.find('div.App-body');
-  const footer = wrapper.find('div.App-footer')
-
-  assert.equal(header.exists(), true)
-  assert.equal(body.exists(), true);
-  assert.equal(footer.exists(), true);
-});
+it('Check latest notifications', () => {
+    expect(Utils.getLatestNotification()).toEqual('<strong>Urgent requirement</strong> - complete by EOD');
+})
