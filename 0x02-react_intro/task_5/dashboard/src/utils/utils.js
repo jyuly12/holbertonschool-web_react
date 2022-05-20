@@ -1,3 +1,5 @@
+import React from 'react';
+
 export function getFullYear(){
     const date = new Date();
     return date.getFullYear();

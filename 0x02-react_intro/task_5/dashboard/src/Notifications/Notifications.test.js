@@ -1,5 +1,6 @@
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
+import React from 'react';
 import Notifications from './Notifications';
 
 const wrapper = shallow(<Notifications />);
