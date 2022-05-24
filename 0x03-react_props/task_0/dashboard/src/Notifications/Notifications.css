@@ -1,0 +1,17 @@
+.Notifications{
+    padding: 0.5rem;
+    border: dotted #e2374c;
+}
+
+.Notifications button {
+    float: right;
+}
+
+li[data="default"] {
+    color: blue;
+}
+
+li[data="urgent"] {
+    color: #e2374c;
+}
+
