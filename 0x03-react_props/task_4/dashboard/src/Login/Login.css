@@ -1,0 +1,21 @@
+.App-login{
+  background-color: #ffffffd8;
+  min-height: 20rem;
+  padding: 1rem;  
+}
+
+label {
+  margin: 0 1rem 0 1rem;
+}
+
+button {
+  margin-left: 1rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+  border-color: #E5E4E4;
+}
+
+input{
+  border-radius: 5px;
+  border-color: #E5E4E4;
+}
