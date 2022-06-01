@@ -20,6 +20,7 @@ it('Checks for correct html rendering', () => {
 })
 
 it('Checks for correct html rendering', () => {
-  const wrapper = shallow(<NotificationItem html={{ __html: 'dangerouslySetInnerHtml' }} />);
+  const wrapper = shallow(<NotificationItem html={'dangerouslySetInnerHtml' } />);
   expect(wrapper.html()).toContain('dangerouslySetInnerHtml');
 })
+
