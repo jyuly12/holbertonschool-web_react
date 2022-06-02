@@ -4,16 +4,11 @@ import PropTypes from "prop-types";
 import CourseShape from "./CourseShape";
 import "./CourseList.css";
 
-const header_style= {
-  background: '#deb5b545'
-};
-const row_style = {
-  background: '#f5f5f5ab'
-};
+
 function CourseList({ listCourses }) {
   return (
     <table id="CourseList">
-      <thead style={header_style}>
+      <thead>
         <CourseListRow textFirstCell="Available courses" isHeader={true}  />
         <CourseListRow
           textFirstCell="Course name"
@@ -21,7 +16,7 @@ function CourseList({ listCourses }) {
           isHeader={true}
         />
       </thead>
-      <tbody style={row_style}>
+      <tbody>
         {listCourses.length === 0 && (
           <CourseListRow
             textFirstCell="No course available yet"
