@@ -11,6 +11,6 @@ describe('<CourseList/>', () =>{
 
     it('checking renders', () => {
     const wrapper = shallow(<CourseList />);
-    expect(wrapper.find(CourseListRow)).to.have.lengthOf(5);
+    expect(wrapper.find(CourseListRow)).to.have.lengthOf(3);
     });
 });

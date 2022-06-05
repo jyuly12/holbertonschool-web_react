@@ -19,8 +19,4 @@ describe('<NotificationItem/>', () =>{
     expect(wrapper.find('li').text()).toBe('This is a success notification');
   });
 
-  it('Checks for correct html rendering', () => {
-    const wrapper = shallow(<NotificationItem html={'dangerouslySetInnerHtml' } />);
-    expect(wrapper.html()).toContain('dangerouslySetInnerHtml');
-  });
 });
