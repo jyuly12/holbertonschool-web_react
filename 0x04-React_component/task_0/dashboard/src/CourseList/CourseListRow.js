@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 function CourseListRow(props) {
   if (props.isHeader) {
@@ -24,5 +24,7 @@ function CourseListRow(props) {
     </>
   )
 }
-
+CourseListRow.propTypes = {
+  textSecondCell: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+}
 export default CourseListRow;

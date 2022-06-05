@@ -7,14 +7,16 @@ import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
 import Notification from '../Notifications/Notifications'
 
-it('Checking App renders', () => {
-  shallow(<App />);
-});
+describe('<App/>', () =>{
+  it('Checking App renders', () => {
+    shallow(<App />);
+  });
 
-it('checking renders', () => {
-  const wrapper = shallow(<App />);
-  expect(wrapper.find(Header).exists()).to.equal(true);
-  expect(wrapper.find(Login).exists()).to.equal(true);
-  expect(wrapper.find(Footer).exists()).to.equal(true);
-  expect(wrapper.find(Notification).exists()).to.equal(true);
+  it('checking renders', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.find(Header).exists()).to.equal(true);
+    expect(wrapper.find(Login).exists()).to.equal(true);
+    expect(wrapper.find(Footer).exists()).to.equal(true);
+    expect(wrapper.find(Notification).exists()).to.equal(true);
+  });
 });
