@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 function NotificationItems(props) {
   if (props.html) {
     return (
-      <li data-notification-type={props.type} dangerouslySetInnerHTML={{ __html: props.html }}></li>
+      <li data-notification-type={props.type} dangerouslySetInnerHTML={props.html}></li>
     );
   }
   return (

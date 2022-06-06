@@ -1,22 +1,39 @@
-import { shallow } from 'enzyme';
-import { expect } from 'chai';
-import React from 'react';
-import Notifications from './Notifications';
+import { shallow, mount } from "enzyme";
+import React from "react";
+import Notifications from "./Notifications";
+import { getLatestNotification } from "../utils/utils";
 
-const wrapper = shallow(<Notifications />);
 
-it('Checking Notifications renders', () => {
-  shallow(<Notifications />);
-});
+describe("<Notifications />", () => {
 
-it('checking render', () => {
+  it("Notifications renders without crashing", () => {
     const wrapper = shallow(<Notifications />);
-    const li = wrapper.find('div');
-    expect(wrapper.text()).contain('Your notifications');
-});
+    expect(wrapper.exists()).toEqual(true);
+  });
 
-it('display drawer is true', () => {
-  const wrapper = shallow(<Notifications displayDrawer='true'/>);
-  expect(wrapper.find('div.menuItem').exists()).to.equal(true);
-  expect(wrapper.find('div.Notifications').exists()).to.equal(true);
+  it("menu item is being displayed when displayDrawer is false", () => {
+    const wrapper = shallow(<Notifications />);
+    wrapper.update();
+    const item = wrapper.find("div.menuItem");
+    expect(item).toHaveLength(1);
+  });
+  it("div.Notifications is not being displayed when displayDrawer is false", () => {
+    const wrapper = shallow(<Notifications />);
+    wrapper.update();
+    const item = wrapper.find("div.Notifications");
+    expect(item).toHaveLength(0);
+  });
+  it("menu item is being displayed when displayDrawer is true", () => {
+    const wrapper = shallow(<Notifications displayDrawer />);
+    wrapper.update();
+    const item = wrapper.find("div.menuItem");
+    expect(item).toHaveLength(1);
+  });
+  it("div.Notifications is being displayed when displayDrawer is true", () => {
+    const wrapper = shallow(<Notifications displayDrawer />);
+    wrapper.update();
+    const item = wrapper.find("div.Notifications");
+    expect(item).toHaveLength(1);
+  });
+
 });
