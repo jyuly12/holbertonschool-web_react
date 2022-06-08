@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import BodySection from "./BodySection";
-import "./BodySectionWithMarginBottom.css";
+import "./BodySection.css";
 
 class BodySectionWithMarginBottom extends Component {
   constructor(props) {

@@ -1,19 +1,14 @@
-export function getFullYear() {
-  return new Date().getFullYear();
+import React from 'react';
+
+export function getFullYear(){
+    const date = new Date();
+    return date.getFullYear();
 }
 
-export function getFooterCopy(isIndex) {
-  let msg;
-
-  if (isIndex) {
-    msg = "Holberton School";
-  } else {
-    msg = "Holberton School main dashboard";
-  }
-
-  return msg;
+export function getFooterCopy(isIndex){
+    return isIndex ? 'Holberton School' : 'Holberton School main dashboard';
 }
 
-export function getLatestNotification() {
-  return "<strong>Urgent requirement</strong> - complete by EOD";
+export function getLatestNotification(){
+    return `<strong>Urgent requirement</strong> - complete by EOD`;
 }

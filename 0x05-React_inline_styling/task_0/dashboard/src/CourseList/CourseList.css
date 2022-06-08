@@ -1,25 +1,22 @@
-:root {
-  --border-table-color: rgb(170, 170, 170);
-}
-
-#CourseList {
-  margin-top: 40px;
-  border: 1px solid var(--border-table-color);
+table {
   border-collapse: collapse;
-  width: 95%;
+  border: 1px solid gray;
+  width: 60%;
+  margin-top: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 60vh !important;
 }
 
-#CourseList th {
-  border-top: 1px solid var(--border-table-color);
-  border-bottom: 1px solid var(--border-table-color);
-  text-align: left;
-  font-size: 18px;
+thead {
+    text-align: center;
+    border-bottom: 1px solid gray;
+    border-top: 1px solid gray;
+}
+thead tr {
+  border-top: 1px solid gray;
 }
 
-#CourseList th[colspan="2"] {
-  text-align: center;
-}
-
-#CourseList td {
+tbody {
   text-align: left;
 }

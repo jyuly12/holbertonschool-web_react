@@ -1,11 +1,11 @@
-import { shallow } from "enzyme";
-import React from "react";
-import CourseListRow from "./CourseListRow";
+import CourseListRow from './CourseListRow';
+import { shallow } from 'enzyme';
+import React from 'react';
 
-describe("<CourseListRow />", () => {
+describe('<CourseListRow/>', () =>{
   it("CourseListRow renders without crashing", () => {
     const wrapper = shallow(<CourseListRow textFirstCell="test" />);
-    expect(wrapper.exists()).toEqual(true);
+    expect(wrapper.exists());
   });
   it("When isHeader is true renders one cell with colspan = 2 when textSecondCell does not exist", () => {
     const wrapper = shallow(
@@ -32,18 +32,5 @@ describe("<CourseListRow />", () => {
     expect(item.first().text()).toEqual("test");
     expect(item.at(1).text()).toEqual("second");
   });
-  it("When isHeader is false renders correctly two td elements within a tr element", () => {
-    const wrapper = shallow(
-      <CourseListRow
-        isHeader={false}
-        textFirstCell="test"
-        textSecondCell="second"
-      />
-    );
-    wrapper.update();
-    const item = wrapper.find("tr");
-
-    expect(item).toHaveLength(1);
-    expect(item.children("td")).toHaveLength(2);
-  });
+  
 });

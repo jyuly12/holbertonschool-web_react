@@ -1,20 +1,25 @@
-import { shallow } from "enzyme";
-import React from "react";
-import Header from "./Header";
+import React from 'react';
+import { shallow } from 'enzyme';
+import { expect } from 'chai';
+import Header from './Header';
 
-describe("<Header />", () => {
-  it("Header renders without crashing", () => {
-    const wrapper = shallow(<Header />);
-    expect(wrapper.exists()).toEqual(true);
+
+
+describe('<CourseList/>', () =>{
+  const wrapper = shallow(<Header/>);
+  it('Checking App renders', () => {
+    shallow(<Header/>);
   });
-  it("Verify that the components render img", () => {
-    const wrapper = shallow(<Header />);
-    wrapper.update();
-    expect(wrapper.find("div.header img")).toHaveLength(1);
+
+  it('Checking App div renders', () => {
+    expect(wrapper.find('.App-header').exists()).to.equal(true);
   });
-  it("Verify that the components render h1", () => {
-    const wrapper = shallow(<Header />);
-    wrapper.update();
-    expect(wrapper.find("div.header h1")).toHaveLength(1);
+
+  it('renders header', () => {
+    expect(wrapper.find('img').exists()).to.equal(true);
+  });
+
+  it('Renders the <p>', () => {
+    expect(wrapper.contains(<h1>School dashboard</h1>)).to.equal(true);
   });
 });

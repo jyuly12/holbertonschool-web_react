@@ -1,17 +1,17 @@
-import { shallow, mount } from "enzyme";
+import { shallow} from "enzyme";
 import React from "react";
 import BodySectionWithMarginBottom from "./BodySectionWithMarginBottom";
 
 describe("<BodySectionWithMarginBottom />", () => {
-  it("BodySectionWithMarginBottom renders without crashing", () => {
+  it("BodySectionWithMarginBottom ", () => {
     const wrapper = shallow(<BodySectionWithMarginBottom />);
     expect(wrapper.exists()).toEqual(true);
   });
 
-  it("Shallowing the component should render correctly a BodySection component and that the props are passed correctly to the child component", () => {
+  it("functionality", () => {
     const wrapper = shallow(
       <BodySectionWithMarginBottom title="test title">
-        <p>test children node</p>
+        <p>test children</p>
       </BodySectionWithMarginBottom>
     );
 
@@ -29,17 +29,6 @@ describe("<BodySectionWithMarginBottom />", () => {
     expect(h2.text()).toEqual("test title");
 
     expect(p).toHaveLength(1);
-    expect(p.text()).toEqual("test children node");
-  });
-  it("BodySectionWithMarginBottom has correct class for style", () => {
-    const wrapper = shallow(
-      <BodySectionWithMarginBottom title="test title">
-        <p>test children node</p>
-      </BodySectionWithMarginBottom>
-    );
-
-    const div = wrapper.find(".bodySectionWithMargin").first();
-
-    expect(div.exists()).toEqual(true);
+    expect(p.text()).toEqual("test children");
   });
 });

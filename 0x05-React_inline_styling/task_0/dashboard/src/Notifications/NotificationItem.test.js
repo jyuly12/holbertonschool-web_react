@@ -1,39 +1,29 @@
-import { shallow } from "enzyme";
-import React from "react";
-import NotificationItem from "./NotificationItem";
+import NotificationItem  from "./NotificationItem";
+import React from 'react';
+import { shallow } from 'enzyme';
 
-describe("<Notifications />", () => {
-  it("NotificationItem renders without crashing", () => {
-    const wrapper = shallow(<NotificationItem />);
-    expect(wrapper.exists()).toEqual(true);
-  });
-  it("Verify that by passing dummy type and value props, it renders the correct html", () => {
-    const wrapper = shallow(<NotificationItem type="default" value="test" />);
-    wrapper.update();
-    const listItem = wrapper.find("li");
+describe('<NotificationItem/>', () =>{
+  const wrapper = shallow(<NotificationItem />);
 
-    expect(listItem).toHaveLength(1);
-    expect(listItem.text()).toEqual("test");
-    expect(listItem.prop("data-notification-type")).toEqual("default");
+  it('Checking NotificationItem renders', () => {
+    shallow(<NotificationItem />);
   });
-  it("Passing a dummy html prop, it renders the correct html (for example", () => {
-    const text = "Here is the list of notifications";
-    const wrapper = shallow(
-      <NotificationItem html={{ __html: "<u>test</u>" }} />
-    );
-    wrapper.update();
-    const listItem = wrapper.find("li");
-    expect(listItem.html()).toEqual(
-      '<li data-notification-type="default"><u>test</u></li>'
-    );
+
+  it('Checks for correct html rendering', () => {
+    const wrapper = shallow(<NotificationItem type="urgent" />);
+    expect(wrapper.html()).toContain('urgent');
   });
-  it("when calling the function markAsRead on an instance of the component, the spy is being called with the right message", () => {
-    const id = 27;
+
+  it('Checks for correct html rendering', () => {
+    const wrapper = shallow(<NotificationItem value="This is a success notification" />);
+    expect(wrapper.find('li').text()).toBe('This is a success notification');
+  });
+    it("when calling the function markAsRead on an instance of the component, the spy is being called with the right message", () => {
+    const id = 7;
 
     const wrapper = shallow(
       <NotificationItem type="default" value="test" id={id} />
     );
-
     const instance = wrapper;
 
     instance.markAsRead = jest.fn();
@@ -44,7 +34,8 @@ describe("<Notifications />", () => {
 
     instance.markAsRead(id);
 
-    expect(instance.markAsRead).toHaveBeenCalledWith(27);
+    expect(instance.markAsRead).toHaveBeenCalledWith(7);
     jest.restoreAllMocks();
   });
+
 });

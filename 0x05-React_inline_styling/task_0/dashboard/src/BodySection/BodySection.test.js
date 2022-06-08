@@ -1,17 +1,16 @@
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 import React from "react";
 import BodySection from "./BodySection";
 
 describe("<BodySection />", () => {
-  it("BodySection renders without crashing", () => {
-    const wrapper = shallow(<BodySection />);
-    expect(wrapper.exists()).toEqual(true);
+  it("BodySection renders", () => {
+    shallow(<BodySection />);
   });
 
-  it("BodySection renders without crashing", () => {
+  it("BodySection renders", () => {
     const wrapper = shallow(
       <BodySection title="test title">
-        <p>test children node</p>
+        <p>test children</p>
       </BodySection>
     );
 
@@ -22,17 +21,6 @@ describe("<BodySection />", () => {
     expect(h2.text()).toEqual("test title");
 
     expect(p).toHaveLength(1);
-    expect(p.text()).toEqual("test children node");
-  });
-  it("BodySection has correct class for style", () => {
-    const wrapper = shallow(
-      <BodySection title="test title">
-        <p>test children node</p>
-      </BodySection>
-    );
-
-    const div = wrapper.find(".bodySection").first();
-
-    expect(div.exists()).toEqual(true);
+    expect(p.text()).toEqual("test children");
   });
 });

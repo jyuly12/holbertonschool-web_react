@@ -1,12 +1,22 @@
-:root {
-  --main-color: #e01d3f;
+.App-login{
+  background-color: #ffffffd8;
+  min-height: 10rem;
+  padding-left: 5rem;  
+  padding-top: 2rem;
 }
 
-.login {
-  margin: 50px;
-  flex-grow: 1;
+label {
+  margin: 0 1rem 0 1rem;
 }
-.login input {
-  margin-left: 10px;
-  margin-right: 20px;
+
+button {
+  margin-left: 1rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+  border-color: #E5E4E4;
+}
+
+input{
+  border-radius: 5px;
+  border-color: #E5E4E4;
 }

@@ -1,25 +1,17 @@
-:root {
-  --main-color: #e01d3f;
+.Notifications{
+    float: right;
+    padding: 0.5rem;
+    width: 30%;
+    border: dotted #e2374c;
 }
 
 .menuItem {
-  text-align: right;
+    display: flex;
+    justify-content: flex-end;
 }
 
-.Notifications {
-  float: right;
-  border: 3px dashed var(--main-color);
-  padding: 10px;
-  margin-bottom: 20px;
-}
-
-.Notifications button img {
-  width: 10px;
-}
-
-.Notifications p {
-  margin: 0;
-  margin-top: 15px;
+.Notifications button {
+    float: right;
 }
 
 [data-notification-type="default"] {
@@ -27,5 +19,5 @@
 }
 
 [data-notification-type="urgent"] {
-  color: red;
+  color: #e2374c;
 }
