@@ -89,8 +89,7 @@ const styles = StyleSheet.create({
      borderBottom: '3px solid #E3334D'
   },
   body: {
-    display: 'flex',
-    justifyContent: 'center'
+    minHeight: '15rem',
   },
   footer: {
     borderTop: '3px solid #E3334D',
