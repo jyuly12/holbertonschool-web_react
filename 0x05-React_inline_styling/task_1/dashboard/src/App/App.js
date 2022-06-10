@@ -49,6 +49,7 @@ class App extends React.Component {
           <div className={css(styles.header)}>
             <Header />
           </div> 
+          <hr className={css(styles.hr)}/>
           <div className={css(styles.body)}>
             { !this.props.isLoggedIn ? 
               <BodySectionWithMarginBottom title="Log in to continue">
@@ -62,6 +63,7 @@ class App extends React.Component {
           <BodySection title="News from the School">
             <p>ramdom text</p>
           </BodySection>
+          <hr className={css(styles.hr)}/>
           <div className={css(styles.footer)}>
             <Footer />
           </div>
