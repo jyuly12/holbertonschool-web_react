@@ -1,99 +1,99 @@
-import React from 'react';
-import Header from '../Header/Header';
-import Login from '../Login/Login';
-import Footer from '../Footer/Footer';
-import CourseList from '../CourseList/CourseList';
-import PropTypes from 'prop-types';
-import {getLatestNotification} from '../utils/utils';
-import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
-import BodySection from '../BodySection/BodySection';
+import React, { Component } from "react";
+import Notifications from "../Notifications/Notifications";
+import Header from "../Header/Header";
+import BodySection from "../BodySection/BodySection";
+import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBottom";
+import Login from "../Login/Login";
+import CourseList from "../CourseList/CourseList";
+import Footer from "../Footer/Footer";
+import PropTypes from "prop-types";
+import { getLatestNotification } from "../utils/utils";
+import WithLogging from "../HOC/WithLogging";
 import { StyleSheet, css } from 'aphrodite';
-import Notifications from '../Notifications/Notifications';
 
 const listCourses = [
-  {id: 1, name: 'ES6', credit: 60},
-  {id: 2, name: 'Webpack', credit: 20},
-  {id: 3, name: 'React', credit: 40}
-]
+  { id: 1, name: "ES6", credit: 60 },
+  { id: 2, name: "Webpack", credit: 20 },
+  { id: 3, name: "React", credit: 40 },
+];
+
 const listNotifications = [
   { id: 1, type: "default", value: "New course available" },
   { id: 2, type: "urgent", value: "New resume available" },
-  { id: 3, type: "urgent", html: { __html: getLatestNotification()}}
-]
-class App extends React.Component {
-  constructor(props){
+  { id: 3, type: "urgent", html: { __html: getLatestNotification() } },
+];
+
+class App extends Component {
+  constructor(props) {
     super(props);
-    this.control = false;
-    this.handleKeyPress = this.handleKeyPress.bind(this);
-  }
-  
-  componentDidMount() {
-    document.addEventListener('keydown', this.handleKeyPress);
+    this.handleKeyCombination = this.handleKeyCombination.bind(this);
   }
 
-  componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleKeyPress);
-  }
-
-  handleKeyPress(event) {
-    if (event.keyCode === 17) this.control = true
-    if (event.keyCode === 72 && this.control) {
-      alert('Logging you out');
+  handleKeyCombination(e) {
+    if (e.key === "h" && e.ctrlKey) {
+      alert("Logging you out");
       this.props.logOut();
     }
   }
-  render(){
+
+  componentDidMount() {
+    document.addEventListener("keydown", this.handleKeyCombination);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleKeyCombination);
+  }
+
+  render() {
+    const { isLoggedIn, logOut } = this.props;
     return (
-      <React.Fragment>
-          <Notifications listNotifications={listNotifications}/>
-          <div className={css(styles.header)}>
-            <Header />
-          </div> 
-          <hr className={css(styles.hr)}/>
-          <div className={css(styles.body)}>
-            { !this.props.isLoggedIn ? 
-              <BodySectionWithMarginBottom title="Log in to continue">
-                <Login /> 
-              </BodySectionWithMarginBottom> :
-              <BodySectionWithMarginBottom title="Course list">
-                <CourseList listCourses={listCourses}/>
-              </BodySectionWithMarginBottom>
-            }
-          </div>
-          <BodySection title="News from the School">
-            <p>ramdom text</p>
-          </BodySection>
-          <hr className={css(styles.hr)}/>
-          <div className={css(styles.footer)}>
-            <Footer />
-          </div>
-      </React.Fragment>
+      <>
+        <Notifications listNotifications={listNotifications} />
+        <div className={css(styles.header)}>
+          <Header />
+        </div>
+        <div className={css(styles.body)}>
+          {!isLoggedIn ? (
+            <BodySectionWithMarginBottom title="Log in to continue">
+              <Login />
+            </BodySectionWithMarginBottom>
+          ) : (
+            <BodySectionWithMarginBottom title="Course list">
+              <CourseList listCourses={listCourses} />
+            </BodySectionWithMarginBottom>
+          )}
+        </div>
+        <BodySection title="News from the School">
+          <p>Random Text</p>
+        </BodySection>
+        <div className={css(styles.footer)}>
+          <Footer />
+        </div>
+      </>
     );
   }
-}
-App.propTypes = {
-  logOut: PropTypes.func,
 }
 
 App.defaultProps = {
   isLoggedIn: false,
   logOut: () => {},
-}
+};
+
+App.propTypes = {
+  isLoggedIn: PropTypes.bool,
+  logOut: PropTypes.func,
+};
+
 const styles = StyleSheet.create({
-  header: {
-    backgroundColor: '#ffffffd8'
+  header: { 
+     borderBottom: '3px solid #E3334D'
   },
-  body:{
-    backgroundColor: '#ffffffd8',
-    minHeight: '15rem',
+  body: {
+    display: 'flex',
+    justifyContent: 'center'
   },
-  hr: {
-    borderColor: '#E3334D',
-    backgroundColor: '#E3334D',
-    height: '2px'
-  },
- 
   footer: {
+    borderTop: '3px solid #E3334D',
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
@@ -102,5 +102,4 @@ const styles = StyleSheet.create({
     fontStyle: 'italic'
   }
 });
-
 export default App;

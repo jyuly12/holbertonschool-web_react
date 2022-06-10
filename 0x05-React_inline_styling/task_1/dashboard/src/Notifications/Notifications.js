@@ -1,96 +1,91 @@
-import React, { Component } from "react";
-import NotificationItem from "./NotificationItem";
-import PropTypes from "prop-types";
-import NotificationItemShape from "./NotificationItemShape";
+import React from 'react';
+import  NotificationItem from './NotificationItem';
+import NotificationItemShape from './NotificationItemShape';
 import closeIcon from "../assets/close-icon.png";
-import {StyleSheet, css} from 'aphrodite';
+import PropTypes from 'prop-types';
+import { StyleSheet, css } from 'aphrodite';
 
-class Notifications extends Component {
+class Notifications extends React.Component{
   constructor(props) {
-    super(props);
-    this.markAsRead = this.markAsRead.bind(this);
+  super(props)
+  this.MarkAsRead = this.markAsRead.bind(this);
   }
-
   shouldComponentUpdate(nextProps) {
     return (
       nextProps.listNotifications.length > this.props.listNotifications.length
     );
   }
-
-  markAsRead(id) {
-    console.log(`Notification ${id} has been marked as read`);
+  markAsRead(id){
+    console.log(`Notification ${id} has been marked as read`)
   }
-
-  render() {
-    const { displayDrawer, listNotifications } = this.props;
-    return (
-      <>
-        <div id="menuItem"className={css(styles.menuItem)}>
+  render(){
+  const {displayDrawer, listNotifications} = this.props
+  return (
+    <React.Fragment>
+      <div id='menuItem' className={css(styles.menuItem)}>
           <p>Your notifications</p>
-        </div>
-        {displayDrawer && (
-          <div id="Notifications" className={css(styles.notifications)}>
-            <button
-              className={css(styles.button)}
-              aria-label="close"
-            >
-              <img src={closeIcon} alt="close-icon"
-                  className={css(styles.buttonImg)}/>
+      </div>
+       {displayDrawer
+        ? (
+          <div className={css(styles.Notifications)} id='Notifications'>
+            <button style={{"arialabel": "Close"}}
+                    className={css(styles.button)}
+                    >
+                      <img src={closeIcon} alt="close-icon"
+                            className={css(styles.buttonImg)}/>
             </button>
             <p>Here is the list of notifications</p>
             <ul>
-              {listNotifications.length === 0 && (
-                <NotificationItem value="No new notification for now" />
-              )}
-
-              {listNotifications.map((notification) => (
-                <NotificationItem
-                  key={notification.id}
-                  id={notification.id}
-                  type={notification.type}
-                  value={notification.value}
-                  html={notification.html}
-                  markAsRead={this.markAsRead}
-                />
-              ))}
+              {!listNotifications.length ? <NotificationItem value="No new notification for now"/> :
+                listNotifications.map(notification => (
+                  <NotificationItem key={notification.id}
+                                    id={notification.id}
+                                    type={notification.type}
+                                    value={notification.value}
+                                    html={notification.html}
+                                    markAsRead={this.MarkAsRead}/>
+                ))
+              }
             </ul>
           </div>
-        )}
-      </>
-    );
-  }
-}
+        )
+      : ( <div></div> )
+      }
+    </React.Fragment>
+  );
+}};
 
 Notifications.defaultProps = {
   displayDrawer: false,
-  listNotifications: [],
+  listNotifications: []
 };
 
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
   listNotifications: PropTypes.arrayOf(NotificationItemShape),
 };
+
 const styles = StyleSheet.create({
-  menuItem: {
-  textAlign: 'right'
+  Notifications: {
+    float: 'right',
+    padding: '0.5rem',
+    width: '30%',
+    border: 'dotted #e2374c',
   },
 
-  notifications: {
-  float: 'right',
-  border: '3px dashed #E0354B',
-  padding: '10px',
-  marginBottom: '20px'
+  menuItem: {
+    display: 'flex',
+    justifyContent: 'flex-end',
   },
+
   button: {
     background: 'transparent',
     border: 'none',
-    position: 'absolute',
-    right: 20
+    float: 'right'
   },
   buttonImg: {
   width: '10px'
   },
+})
 
-
-});
-export default Notifications; 
+export default Notifications;
