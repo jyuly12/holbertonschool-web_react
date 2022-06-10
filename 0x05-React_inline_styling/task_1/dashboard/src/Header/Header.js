@@ -17,11 +17,11 @@ function Header(){
 
 const styles = StyleSheet.create({
   AppHeader: {
-  backgroundColor: '#ffffffd8',
-  display: 'flex',
-  alignItems: 'center',
-  color: '#E3334D'
-  },
+    backgroundColor: '#ffffffd8',
+    display: 'flex',
+    alignItems: 'center',
+    color: '#E3334D'
+    },
 
   AppLogo: {
     height: '10.5rem'

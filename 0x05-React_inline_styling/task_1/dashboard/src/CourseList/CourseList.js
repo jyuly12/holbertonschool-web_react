@@ -2,12 +2,13 @@ import React from "react";
 import CourseListRow from './CourseListRow';
 import PropTypes from 'prop-types';
 import CourseShape from "./CourseShape";
+import './CourseList.css'
 import {StyleSheet, css} from 'aphrodite';
 
 function CourseList({listCourses}){
     return(
         <table id='CourseList' className={css(styles.table)}>
-            <thead className={css(styles.thead)}>
+            <thead>
                 <CourseListRow textFirstCell="Available courses"
                                 isHeader={true}/>
 
@@ -16,7 +17,7 @@ function CourseList({listCourses}){
                                 isHeader={true}
                                 />
             </thead>
-            <tbody className={css(styles.tbody)}>
+            <tbody>
                 {!listCourses.length ? <CourseListRow textSecondCell="No course available yet" isHeader={false}/> :
                     listCourses.map(course => (
                         <CourseListRow key={course.id}
@@ -46,19 +47,6 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
     marginBottom: '60vh !important'
-    },
-
-    thead: {
-        textAlign: 'center',
-        borderBottom: '1px solid gray',
-        borderTop: '1px solid gray'
-    },
-    Headtr: {
-        borderTop: '1px solid gray'
-    },
-
-    tbody: {
-    textAlign: 'left'
     }
 })
 export default CourseList;

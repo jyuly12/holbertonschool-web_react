@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
   },
   p: {
     textAlign: 'center',
-    fontSize: '20px'
   },
   Login: {
     display: 'flex',

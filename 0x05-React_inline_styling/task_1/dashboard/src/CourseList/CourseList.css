@@ -1,0 +1,12 @@
+thead {
+    text-align: center;
+    border-bottom: 1px solid gray;
+    border-top: 1px solid gray;
+}
+thead tr {
+  border-top: 1px solid gray;
+}
+
+tbody {
+  text-align: left;
+}

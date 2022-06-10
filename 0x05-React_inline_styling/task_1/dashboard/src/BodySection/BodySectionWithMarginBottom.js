@@ -28,5 +28,6 @@ BodySectionWithMarginBottom.propTypes = {
 
 const styles = StyleSheet.create({
   bodySection: '40px',
+  width: "100%",
 })
 export default BodySectionWithMarginBottom;
