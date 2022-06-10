@@ -18,7 +18,7 @@ describe("<App />", () => {
   it("should contain the Notifications component", () => {
     const wrapper = shallow(<App />);
     wrapper.update();
-    expect(wrapper.find("Notification")).toHaveLength(1);
+    expect(wrapper.find("Notifications")).toHaveLength(1);
   });
   it("should contain the Header component", () => {
     const wrapper = shallow(<App />);

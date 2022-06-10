@@ -2,13 +2,13 @@ import React from 'react';
 import Header from '../Header/Header';
 import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
-import Notification from '../Notifications/Notifications';
 import CourseList from '../CourseList/CourseList';
 import PropTypes from 'prop-types';
 import {getLatestNotification} from '../utils/utils';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import BodySection from '../BodySection/BodySection';
 import { StyleSheet, css } from 'aphrodite';
+import Notifications from '../Notifications/Notifications';
 
 const listCourses = [
   {id: 1, name: 'ES6', credit: 60},
@@ -45,7 +45,7 @@ class App extends React.Component {
   render(){
     return (
       <React.Fragment>
-          <Notification listNotifications={listNotifications}/>
+          <Notifications listNotifications={listNotifications}/>
           <div className={css(styles.header)}>
             <Header />
           </div> 
