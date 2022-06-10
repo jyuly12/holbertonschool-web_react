@@ -11,7 +11,7 @@ class BodySectionWithMarginBottom extends Component {
 
   render() {
     return (
-      <div className={css(styles.bodySection)}>
+      <div className={css(styles.margin)}>
         <BodySection {...this.props} />
       </div>
     );
@@ -27,7 +27,8 @@ BodySectionWithMarginBottom.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  bodySection: '40px',
+  margin: '40px',
   width: "100%",
-})
+});
+
 export default BodySectionWithMarginBottom;

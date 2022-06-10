@@ -1,8 +1,8 @@
 import React from 'react';
 import  NotificationItem from './NotificationItem';
 import NotificationItemShape from './NotificationItemShape';
+import closeIcon from "../assets/close-icon.png";
 import PropTypes from 'prop-types';
-import './Notifications.css'
 import { StyleSheet, css } from 'aphrodite';
 
 class Notification extends React.Component{
@@ -29,9 +29,11 @@ class Notification extends React.Component{
         ? (
           <div className={css(styles.Notifications)} id='Notifications'>
             <button style={{"arialabel": "Close"}}
-                    onClick={console.log('Close button has been clicked')}
                     className={css(styles.button)}
-                    >x</button>
+                    >
+                      <img src={closeIcon} alt="close-icon"
+                            className={css(styles.buttonImg)}/>
+            </button>
             <p>Here is the list of notifications</p>
             <ul>
               {!listNotifications.length ? <NotificationItem value="No new notification for now"/> :
@@ -77,8 +79,13 @@ const styles = StyleSheet.create({
   },
 
   button: {
+    background: 'transparent',
+    border: 'none',
     float: 'right'
-  }
+  },
+  buttonImg: {
+  width: '10px'
+  },
 })
 
 export default Notification;

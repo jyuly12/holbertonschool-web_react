@@ -46,16 +46,20 @@ class App extends React.Component {
     return (
       <React.Fragment>
           <Notification listNotifications={listNotifications}/>
-          <Header />
+          <div className={css(styles.header)}>
+            <Header />
+          </div> 
           <hr className={css(styles.hr)}/>
-          { !this.props.isLoggedIn ? 
-            <BodySectionWithMarginBottom title="Log in to continue">
-              <Login /> 
-            </BodySectionWithMarginBottom> :
-            <BodySectionWithMarginBottom title="Course list">
-              <CourseList listCourses={listCourses}/>
-            </BodySectionWithMarginBottom>
-          }
+          <div className={css(styles.body)}>
+            { !this.props.isLoggedIn ? 
+              <BodySectionWithMarginBottom title="Log in to continue">
+                <Login /> 
+              </BodySectionWithMarginBottom> :
+              <BodySectionWithMarginBottom title="Course list">
+                <CourseList listCourses={listCourses}/>
+              </BodySectionWithMarginBottom>
+            }
+          </div>
           <BodySection title="News from the School">
             <p>ramdom text</p>
           </BodySection>
@@ -76,7 +80,13 @@ App.defaultProps = {
   logOut: () => {},
 }
 const styles = StyleSheet.create({
-
+  header: {
+    backgroundColor: '#ffffffd8'
+  },
+  body:{
+    backgroundColor: '#ffffffd8',
+    minHeight: '15rem',
+  },
   hr: {
     borderColor: '#E3334D',
     backgroundColor: '#E3334D',

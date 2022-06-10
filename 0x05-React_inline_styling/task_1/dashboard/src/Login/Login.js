@@ -20,10 +20,9 @@ function Login(){
   )
 }
 const styles = StyleSheet.create({
-  AppLogin: {
-    backgroundColor: '#ffffffd8',
-    minHeight: '10rem',
-    paddingTop: '2rem'
+ 
+  AppLogin:{
+    marginTop: '2rem',
   },
   p: {
     textAlign: 'center',
