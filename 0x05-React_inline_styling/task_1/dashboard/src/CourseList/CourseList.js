@@ -43,10 +43,7 @@ const styles = StyleSheet.create({
     borderCollapse: 'collapse',
     border: '1px solid gray',
     width: '60%',
-    marginTop: '3rem',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    marginBottom: '60vh !important'
+    margin: '3rem auto 3rem auto'
     }
 })
 export default CourseList;
