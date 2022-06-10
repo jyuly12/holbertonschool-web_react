@@ -45,7 +45,6 @@ class App extends React.Component {
   render(){
     return (
       <React.Fragment>
-        <div className='App'>
           <Notification listNotifications={listNotifications}/>
           <Header />
           <hr className={css(styles.hr)}/>
@@ -64,7 +63,6 @@ class App extends React.Component {
           <div className={css(styles.footer)}>
             <Footer />
           </div>
-        </div>
       </React.Fragment>
     );
   }
