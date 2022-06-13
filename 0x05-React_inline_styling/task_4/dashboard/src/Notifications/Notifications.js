@@ -83,29 +83,29 @@ const opacityKeyframes = {
   },
 };
 const translateYKeyframes = {
-  "0%": {
-    transform: "translateY(0)",
+  '0%': {
+    transform: 'translateY(0)',
   },
 
-  "50%": {
-    transform: "translateY(-5px)",
+  '50%': {
+    transform: 'translateY(-5px)',
   },
 
-  "75%": {
-    transform: "translateY(5px)",
+  '75%': {
+    transform: 'translateY(5px)',
   },
 
-  "100%": {
-    transform: "translateY(0)",
+  '100%': {
+    transform: 'translateY(0)',
   },
 };
 
 const borderKeyframes = {
-  "0%": {
+  '0%': {
     border: `2px dashed blue`,
   },
 
-  "100%": {
+  '100%': {
     border: `2px dashed #e2374c`,
   },
 };
@@ -115,9 +115,9 @@ const styles = StyleSheet.create({
     padding: '0.5rem',
     width: '30%',
     animationName: [borderKeyframes],
-    animationDuration: "0.8s",
+    animationDuration: '0.8s',
     animationIterationCount: 1,
-    animationFillMode: "forwards",
+    animationFillMode: 'forwards',
     [screenSize.small]: {
       margin: '0',
       float:'none',
@@ -130,11 +130,11 @@ const styles = StyleSheet.create({
   menuItem: {
     float: 'right',
     margin: '9px',
-    backgroundColor: "#fff8f8",
-    ":hover": {
-      cursor: "pointer",
+    backgroundColor: '#fff8f8',
+    ':hover': {
+      cursor: 'pointer',
       animationName: [opacityKeyframes, translateYKeyframes],
-      animationDuration: "1s, 0.5s",
+      animationDuration: '1s, 0.5s',
       animationIterationCount: 3,
     },
   },
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
   menuItemNoShow: {
     display: 'flex',
     justifyContent: 'flex-end',
-    backgroundColor: "#fff8f8",
+    backgroundColor: '#fff8f8',
     display: 'none'
   },
 
