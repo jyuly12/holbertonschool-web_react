@@ -55,7 +55,7 @@ class App extends Component {
   }
 
   render() {
-    const {displayDrawer} = this.state
+    const displayDrawer = this.state
     const { isLoggedIn, logOut } = this.props;
     return (
       <>
