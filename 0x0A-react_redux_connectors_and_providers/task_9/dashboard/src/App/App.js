@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Notifications from '../Notifications/Notifications';
 import Header from '../Header/Header';
 import BodySection from '../BodySection/BodySection';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
@@ -16,6 +15,7 @@ import {
   loginRequest,
   logout
 } from "../actions/uiActionCreators";
+import { NotificationsContainer } from '../Notifications/NotificationsContainer';
 
 const listCourses = [
   { id: 1, name: 'ES6', credit: 60 },
@@ -58,7 +58,7 @@ export class App extends Component {
     } = this.props;
     return (
       <>
-        <Notifications
+        <NotificationsContainer
           displayDrawer ={displayDrawer}
           handleDisplayDrawer={displayNotificationDrawer}
           handleHideDrawer={hideNotificationDrawer}

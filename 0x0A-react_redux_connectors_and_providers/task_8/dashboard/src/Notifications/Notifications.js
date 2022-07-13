@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
 })
 Notifications.defaultProps = {
   displayDrawer: false,
-  listNotifications: [],
+  listNotifications: null,
   handleDisplayDrawer: () => {},
   handleHideDrawer: () => {},
   markNotificationAsRead: () => {},
@@ -186,7 +186,7 @@ Notifications.defaultProps = {
 }
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
-  listNotifications: PropTypes.array,
+  listNotifications: PropTypes.object,
   handleDisplayDrawer: PropTypes.func,
   handleHideDrawer: PropTypes.func,
   markNotificationAsRead: PropTypes.func,
@@ -201,10 +201,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = {
+const mapProps = {
   fetchNotifications,
   markNotificationAsRead: markAsAread,
   setNotificationFilter
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Notifications)
+export default connect(mapStateToProps, mapProps)(Notifications)

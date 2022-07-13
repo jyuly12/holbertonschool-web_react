@@ -1,39 +1,24 @@
 import React, { PureComponent, Component } from "react";
-import { connect } from "react-redux";
-import {
-  fetchNotifications,
-  markAsAread,
-  setNotificationFilter,
-} from "../actions/notificationActionCreators";
 import NotificationItem from "./NotificationItem";
-import { getUnreadNotificationsByType } from "../selectors/notificationSelector";
 import PropTypes from "prop-types";
 import closeIcon from "../assets/close-icon.png";
 import { StyleSheet, css } from "aphrodite";
 
-export class Notifications extends React.PureComponent{
-  constructor(props) {
-  super(props)
-  }
-
-  componentDidMount(){
-    this.props.fetchNotifications()
-  }
-  
-  render(){
+function Notifications(props) {
     const {
-        displayDrawer,
-        listNotifications,
-        handleDisplayDrawer,
-        handleHideDrawer,
-        markNotificationAsRead,
-        setNotificationFilter,
-      } = this.props;
+      displayDrawer,
+      listNotifications,
+      handleDisplayDrawer,
+      handleHideDrawer,
+      markNotificationAsRead,
+      setNotificationFilter,
+    } = props;
+
     const menuStyle = css(
         displayDrawer ? styles.menuItemNoShow : styles.menuItem
     );
   return (
-    <React.Fragment>
+    <>
       <div id='menuItem'
           className={menuStyle}
           onClick={handleDisplayDrawer}>
@@ -56,28 +41,38 @@ export class Notifications extends React.PureComponent{
             <button type="button" id="FilterDefault" className={css(styles.filterButton)} onClick={() => setNotificationFilter("DEFAULT")}>💠</button>
             
             <ul >
-              {!listNotifications.length && (<NotificationItem value="No new notification for now" type='no-new' />)}
-              
-              {listNotifications && listNotifications.map(
-                      ({type, value, html, guid}, index) =>
-                        <NotificationItem key={index}
-                                          id={index}
-                                          guid={guid}
-                                          type={type}
-                                          value={value}
-                                          html={html}
-                                          markNotificationAsRead={markNotificationAsRead}
-                        />
-              )}
+              {!listNotifications && (
+              <NotificationItem
+                type="no-new"
+                value="No new notifications for now"
+              />
+            )}
+
+            {listNotifications && listNotifications.valueSeq().map((notification) => {
+                let html = notification.get("html");
+
+                if (html) html = html.toJS();
+
+                return (
+                  <NotificationItem
+                    key={notification.get("guid")}
+                    id={notification.get("guid")}
+                    type={notification.get("type")}
+                    value={notification.get("value")}
+                    html={html}
+                    markAsRead={markNotificationAsRead}
+                  />
+                );
+              })}
                 
             </ul>
           </div>
         )
       : ( <div></div> )
       }
-    </React.Fragment>
+    </>
   );
-}};
+};
 
 const screenSize = {
   small: '@media screen and (max-width: 900px)',
@@ -178,7 +173,7 @@ const styles = StyleSheet.create({
 })
 Notifications.defaultProps = {
   displayDrawer: false,
-  listNotifications: [],
+  listNotifications: null,
   handleDisplayDrawer: () => {},
   handleHideDrawer: () => {},
   markNotificationAsRead: () => {},
@@ -186,25 +181,11 @@ Notifications.defaultProps = {
 }
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
-  listNotifications: PropTypes.array,
+  listNotifications: PropTypes.object,
   handleDisplayDrawer: PropTypes.func,
   handleHideDrawer: PropTypes.func,
   markNotificationAsRead: PropTypes.func,
   fetchNotifications: PropTypes.func
 }
 
-const mapStateToProps = (state) => {
-  const unreadNotificationsByType = getUnreadNotificationsByType(state);
-
-  return {
-    listNotifications: unreadNotificationsByType,
-  };
-};
-
-const mapDispatchToProps = {
-  fetchNotifications,
-  markNotificationAsRead: markAsAread,
-  setNotificationFilter
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Notifications)
+export default Notifications;
